@@ -1,4 +1,18 @@
 import numpy as np
+import pandas as pd
+# Recursive Bayesian Estimation
+# Kalman Filter
+# https://www-oxfordhandbooks-com.stanford.idm.oclc.org/view/10.1093/oxfordhb/9780190213299.001.0001/oxfordhb-9780190213299-e-28
+# https://nbviewer.jupyter.org/github/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/01-g-h-filter.ipynb
+# https://www.johndcook.com/blog/2012/10/29/product-of-normal-pdfs/
+# https://ccrma.stanford.edu/~jos/sasp/Product_Two_Gaussian_PDFs.html
+
+# Import polling data
+df = pd.read_csv('data.csv', index_col = 0)
+df.insert(df.shape[1], "PA_Biden", '')
+df.insert(df.shape[1], "PA_Trump", '')
+df.insert(df.shape[1], "PA_SD", '')
+
 
 # Dictionary of Electoral College Votes
 EC = {	'AK':3, 'AL':9, 'AR':6, 'AZ':11, 'CA':55, 'CO': 9, 'CT':7, 'DE':3, 'FL':29, 'GA':16, \
@@ -8,6 +22,7 @@ EC = {	'AK':3, 'AL':9, 'AR':6, 'AZ':11, 'CA':55, 'CO': 9, 'CT':7, 'DE':3, 'FL':2
 		'SD':3, 'TN':11, 'TX':38, 'UT':6, 'VA':13, 'VT':3, 'WA':12, 'WI':10, 'WV':5, 'WY':3, \
 		'DC':3}
 
+
 # List of States
 States = (	'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', \
 			'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', \
@@ -15,31 +30,67 @@ States = (	'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', \
 			'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', \
 			'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY', 'DC')
 
-def StateElection(State, BidenPoll, TrumpPoll, MOE):
+
+def StateElection():
 	BidenDelegates = 0
 	TrumpDelegates = 0
 
-	BidenResult = np.random.normal(BidenPoll, MOE/2)
-	TrumpResult = TrumpPoll + (BidenPoll - BidenResult)
+	for i in range(0, len(States)):
+		State = States[i]
 
+		BidenResult = np.random.normal(df.PA_Biden[State], df.PA_SD[State])
+		TrumpResult = np.random.normal(df.PA_Trump[State], df.PA_SD[State])
 
-	if BidenResult > TrumpResult:
-		BidenDelegates = EC[State]
-	else:
-		TrumpDelegates = EC[State]
+		if BidenResult > TrumpResult:
+			BidenDelegates = BidenDelegates + EC[State]
+		else:
+			TrumpDelegates = TrumpDelegates + EC[State]
 
 	return BidenDelegates, TrumpDelegates
 
-OV_B = 0
-OV_T = 0
 
-for i in range(0,len(States)):
+# Description on bayesion updating of gausian / normal PDFs
+def BayesianUpdate(PriorMU, PriorSD, LikelihoodMU, LikelihoodSD):
+	PosteriorMU = (((PriorSD**2)*(LikelihoodMU)) + ((LikelihoodSD**2)*(PriorMU))) \
+		/ ((PriorSD**2) + (LikelihoodSD**2))
 
-	B, T = StateElection(States[i], .50, .50, .04)
+	PosteriorSD = (((PriorSD**2)*(LikelihoodSD**2)) \
+					/ ((PriorSD**2) + (LikelihoodSD**2)))**(1/2)
 
-	OV_B = OV_B + B
-	OV_T = OV_T + T
-	#print(States[i])
+	return PosteriorMU, PosteriorSD
 
-print(OV_B)
-print(OV_T)
+
+
+def StateAggregator():
+	for i in range(0, len(States)):
+		State = States[i]
+
+		# Biden - aggregate the first and second poles
+		# Divide margin of error (95% confidence interval) for standard deviation
+		BidenMU, BidenSD = BayesianUpdate(df.P1_Biden[State], df.P1_MOE[State]/1.96, \
+										  df.P2_Biden[State], df.P2_MOE[State]/1.96)
+		# Aggregate these with the third pole
+		BidenMU, BidenSD = BayesianUpdate(BidenMU, BidenSD, \
+										  df.P3_Biden[State], df.P3_MOE[State]/1.96)
+		
+		# Trump - aggregate the first and second poles
+		# Divide margin of error (95% confidence interval) for standard deviation
+		TrumpMU, TrumpSD = BayesianUpdate(df.P1_Trump[State], df.P1_MOE[State]/1.96, \
+										  df.P2_Trump[State], df.P2_MOE[State]/1.96)
+		# Aggregate these with the third pole
+		TrumpMU, TrumpSD = BayesianUpdate(TrumpMU, TrumpSD, \
+										  df.P3_Trump[State], df.P3_MOE[State]/1.96)
+
+		# Update the global dataframe
+		df.PA_Biden[State] = BidenMU
+		df.PA_Trump[State] = TrumpMU
+
+		# The standard deviation of the aggregated poll is equal for Biden and Trump
+		df.PA_SD[State] = BidenSD
+
+
+StateAggregator()
+
+b, t = StateElection()
+print(b)
+print(t)
