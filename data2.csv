@@ -185,25 +185,25 @@ KS,Civiqs/Daily Kos,"May 30 – Jun 1, 2020",699,4.2,0.52,0.4
 KS,The Progress Campaign (D),"Apr 15–22, 2020","1,632",4.7,0.51,0.41
 KS,Public Policy Polling,"Mar 10–11, 2020","1,567",,0.52,0.4
 KS,DFM Research,"Jan 30 – Feb 6, 2020",600,4,0.51,0.43
-KT,SurveyMonkey/Tableau,"Sep 1–30, 2020","1,479",,0.59,0.39
-KT,Data for Progress (D),"Sep 14–19, 2020",807,3.5,0.55,0.35
-KT,Quinnipiac University,"Sep 10–14, 2020","1,164",2.9,0.58,0.38
-KT,SurveyMonkey/Tableau,"Aug 1–31, 2020","1,231",,0.6,0.38
-KT,Quinnipiac University,"Jul 30 – Aug 3, 2020",909,3.3,0.5,0.41
-KT,Morning Consult,"Jul 24 – Aug 2, 2020",793,3,0.59,0.35
-KT,SurveyMonkey/Tableau,"Jul 1–31, 2020","1,709",,0.62,0.37
-KT,Bluegrass Data/Ditch Mitch Fund[AM],"Jul 25–29, 2020","3,020",2,0.52,0.45
-KT,Spry Strategies/American Principles Project[AN],"Jul 11–16, 2020",600,3.7,0.6,0.34
-KT,Garin-Hart-Yang/Amy McGrath[AO],"Jul 7–12, 2020",800,3.5,0.53,0.41
-KT,SurveyMonkey/Tableau,"Jun 8–30, 2020",596,,0.6,0.38
-KT,Garin-Hart-Yang/Amy McGrath[AP],20-Jun,– ,,0.54,0.39
-KT,Civiqs/Data for Progress,"Jun 13–15, 2020",898,3.8,0.57,0.37
-KT,Garin-Hart-Yang/Amy McGrath[AQ],20-May,– ,,0.57,0.36
-KT,RMG Research/U.S. Term Limits[lx],"May 21–24, 2020",500,4.5,0.53,0.36
-KT,Public Policy Polling,"May 14–15, 2020","1,104",,0.55,0.39
-KT,Bluegrass Data/Ditch Mitch Fund[AR],"Apr 7–12, 2020[ma]","4,000",,0.55,0.34
-KT,Fabrizio Ward/AARP,"Jul 29–31, 2019",600,4,0.53,0.41
-KT,Gravis Marketing,"Jun 11–12, 2019",741,3.6,0.57,0.37
+KY,SurveyMonkey/Tableau,"Sep 1–30, 2020","1,479",,0.59,0.39
+KY,Data for Progress (D),"Sep 14–19, 2020",807,3.5,0.55,0.35
+KY,Quinnipiac University,"Sep 10–14, 2020","1,164",2.9,0.58,0.38
+KY,SurveyMonkey/Tableau,"Aug 1–31, 2020","1,231",,0.6,0.38
+KY,Quinnipiac University,"Jul 30 – Aug 3, 2020",909,3.3,0.5,0.41
+KY,Morning Consult,"Jul 24 – Aug 2, 2020",793,3,0.59,0.35
+KY,SurveyMonkey/Tableau,"Jul 1–31, 2020","1,709",,0.62,0.37
+KY,Bluegrass Data/Ditch Mitch Fund[AM],"Jul 25–29, 2020","3,020",2,0.52,0.45
+KY,Spry Strategies/American Principles Project[AN],"Jul 11–16, 2020",600,3.7,0.6,0.34
+KY,Garin-Hart-Yang/Amy McGrath[AO],"Jul 7–12, 2020",800,3.5,0.53,0.41
+KY,SurveyMonkey/Tableau,"Jun 8–30, 2020",596,,0.6,0.38
+KY,Garin-Hart-Yang/Amy McGrath[AP],20-Jun,– ,,0.54,0.39
+KY,Civiqs/Data for Progress,"Jun 13–15, 2020",898,3.8,0.57,0.37
+KY,Garin-Hart-Yang/Amy McGrath[AQ],20-May,– ,,0.57,0.36
+KY,RMG Research/U.S. Term Limits[lx],"May 21–24, 2020",500,4.5,0.53,0.36
+KY,Public Policy Polling,"May 14–15, 2020","1,104",,0.55,0.39
+KY,Bluegrass Data/Ditch Mitch Fund[AR],"Apr 7–12, 2020[ma]","4,000",,0.55,0.34
+KY,Fabrizio Ward/AARP,"Jul 29–31, 2019",600,4,0.53,0.41
+KY,Gravis Marketing,"Jun 11–12, 2019",741,3.6,0.57,0.37
 LA,Trafalgar Group,"Oct 4–6, 2020","1,048",2.95,0.54,0.36
 LA,SurveyMonkey/Tableau,"Sep 1–30, 2020","2,475",,0.6,0.38
 LA,Tyson Group/Consumer Energy Alliance[A],"Sep 2–5, 2020",600,4,0.48,0.42
@@ -477,6 +477,15 @@ OR,Quinnipiac University,Oct 1–5,"1,211",2.8,0.41,0.54
 OR,Ipsos/Reuters,Sep 29 – Oct 5,605,4.5,0.45,0.5
 OR,Change Research/CNBC,Oct 2–4,468,,0.46,0.5
 OR,Monmouth University,Sep 30 – Oct 4,500,4.4,0.42,0.54
+PA,HarrisX/The Hill,Oct 12–15,"1,289",,0.46,0.51
+PA,Insider Advantage/Center for American Greatness,Oct 12–13,400,4.9,0.43,0.46
+PA,Trafalgar Group,Oct 10–12,"1,034",2.97,0.45,0.47
+PA,RMG Research/PoliticalIQ,Oct 7–12,800,,0.43,0.49
+PA,Civiqs/Rust Belt Rising,Oct 8–11,600,4.2,0.45,0.52
+PA,Ipsos/Reuters,Oct 6–11,622,4.5,0.45,0.51
+PA,Morning Consult,Oct 2–11,"2,610",1.9,0.44,0.52
+PA,Whitman Insight Strategies,Oct 5–9,517,4.3,0.46,0.51
+PA,Baldwin Wallace University,Sep 30 – Oct 8,"1,140",3.1,0.45,0.5
 RI,SurveyMonkey/Tableau,"Sep 1–30, 2020",351,,0.37,0.62
 RI,SurveyMonkey/Tableau,"Aug 1–31, 2020",208,,0.41,0.57
 RI,SurveyMonkey/Tableau,"Jul 1–31, 2020",253,,0.39,0.6
